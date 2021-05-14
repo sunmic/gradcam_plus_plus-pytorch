@@ -62,7 +62,7 @@ def find_resnet_layer(arch, target_layer_name):
             target_layer = target_layer[bottleneck_num]
 
         if len(hierarchy) >= 3:
-            target_layer = target_layer._modules[hierarchy[2]]
+            target_layer = target_layer._modules[hierarchy[2].replace('-', '_')] #Quick Hack to replace triplet-attention with triplet_attention #TODO: fix
                 
         if len(hierarchy) == 4:
             target_layer = target_layer._modules[hierarchy[3]]
